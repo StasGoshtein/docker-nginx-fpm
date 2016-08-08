@@ -4,25 +4,25 @@
 ############################################################
 
 # Set the base image to Ubuntu
-FROM centos:latest
+FROM centos:centos7
 
 # File Author / Maintainer
-MAINTAINER Kaushal Kishore <kaushal.rahuljaiswal@gmail.com>
+#Based on MAINTAINER Kaushal Kishore <kaushal.rahuljaiswal@gmail.com>
 
 # Add the ngix and PHP dependent repository
 ADD nginx.repo /etc/yum.repos.d/nginx.repo
+ADD remi.repo /etc/yum.repos.d/remi.repo
 
 # Installing nginx 
-RUN yum -y install nginx
+RUN yum -y install nginx epel-release
 
 # Installing PHP
-RUN yum -y --enablerepo=remi,remi-php56 install nginx php-fpm php-common
+RUN yum -y install php-fpm php-common php-cli php-mysql
 
 # Installing supervisor
-RUN yum install -y python-setuptools
+RUN yum install -y python-setuptools && yum -y update && yum clean all
 RUN easy_install pip
 RUN pip install supervisor
-
 
 # Adding the configuration file of the nginx
 ADD nginx.conf /etc/nginx/nginx.conf
