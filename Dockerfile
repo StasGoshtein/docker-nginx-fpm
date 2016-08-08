@@ -31,8 +31,10 @@ ADD default.conf /etc/nginx/conf.d/default.conf
 # Adding the configuration file of the Supervisor
 ADD supervisord.conf /etc/
 
-# Adding the default file
-ADD index.php /var/www/index.php
+# Adding WP files
+ADD src /var/www/html/
+
+ADD wp-config.php /var/www/html/wp-config.php
 
 # Set the port to 80 
 EXPOSE 80
