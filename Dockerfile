@@ -27,6 +27,7 @@ RUN pip install supervisor
 # Adding the configuration file of the nginx
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD default.conf /etc/nginx/conf.d/default.conf
+ADD php-fpm.conf /etc/php-fpm.conf
 
 # Adding the configuration file of the Supervisor
 ADD supervisord.conf /etc/
