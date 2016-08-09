@@ -33,9 +33,7 @@ ADD php-fpm.conf /etc/php-fpm.conf
 ADD supervisord.conf /etc/
 
 # Adding WP files
-ADD src /var/www/html/
-
-ADD wp-config.php /var/www/html/wp-config.php
+ADD index.php /var/www/html/index.php
 
 # Set the port to 80 
 EXPOSE 80
